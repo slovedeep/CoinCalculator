@@ -11,23 +11,22 @@
 
 <body>
     <h1 class="title">Coin Calculator</h1>
-
     <div>
         <!-- <form action=""> -->
             <p>Please Select:</p>
             <label for="coins">Select Coin</label>
             <select name="coins" id="selectCoin">
-                <option value="1">1cnt</option>
-                <option value="2">2cnt</option>
-                <option value="5">5cnt</option>
-                <option value="10">10cnt</option>
-                <option value="20">20cnt</option>
-                <option value="50">50cnt</option>
-                <option value="100">1€</option>
-                <option value="200">2€</option>
+                <option value="1" onclick="UpdatePlaceHolder(1)">1cnt</option>
+                <option value="2" onclick="UpdatePlaceHolder(2)">2cnt</option>
+                <option value="5" onclick="UpdatePlaceHolder(5)">5cnt</option>
+                <option value="10" onclick="UpdatePlaceHolder(10)">10cnt</option>
+                <option value="20" onclick="UpdatePlaceHolder(20)">20cnt</option>
+                <option value="50" onclick="UpdatePlaceHolder(50)">50cnt</option>
+                <option value="100" onclick="UpdatePlaceHolder(100)">1€</option>
+                <option value="200" onclick="UpdatePlaceHolder(200)">2€</option>
               </select>
               <label for="weight">Weight</label>
-              <input type="text" id="coinWeight" name="weight" placeholder="3.14">grams
+              <input type="text" id="coinWeight" name="weight" placeholder="2.3">grams
               <button onclick="Calculate()">Calculate</button>
               <p id="total"></p>
         <!-- </form> -->

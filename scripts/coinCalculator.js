@@ -7,67 +7,15 @@ function Calculate() {
     console.log('The coinWeight is ' + coinWeight);
     document.getElementById('total').innerHTML = '';
     total = 0;
-    switch (coinSelected) {
-        case 1:
-            weight = 2.3;
-            if (checkWeight(weight)) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 2:
-            weight = 3;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 5:
-            weight = 3.9;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 10:
-            weight = 4.1;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 20:
-            weight = 5.7;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 50:
-            weight = 7.8;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 100:
-            weight = 7.5;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        case 200:
-            weight = 8.5;
-            if (coinWeight >= weight) {
-                total = CalculateTotalValue(weight);
-            }
-            break;
-        default:
-            break;
+
+    weight = getCoinWeight(coinSelected);
+    if (checkWeight(weight)) {
+        total = CalculateTotalValue(weight);
     }
+
     if (total != 0) {
         document.getElementById('total').innerHTML = 'There are ' + getDecimalNum(totalCoins) + ' coins and the total value of the coin ' + coinSelected + '€ is ' + getDecimalNum(total) + ' €';
     }
-}
-
-function CalculateTotalValue(weight) {
-    coinSelected = coinSelected / 100;
-    totalCoins = coinWeight / weight;
-    return (totalCoins * coinSelected);
 }
 
 function getHtmlValues() {
@@ -81,6 +29,58 @@ function getHtmlValues() {
     coinWeight = parseFloat(coinW) || 0;
 }
 
+function getCoinWeight(coin) {
+    
+    switch (coin) {
+        case 1:
+            return 2.3;
+            break;
+        case 2:
+            return 3;
+
+            break;
+        case 5:
+            return 3.9;
+
+            break;
+        case 10:
+            return 4.1;
+
+            break;
+        case 20:
+            return 5.7;
+
+            break;
+        case 50:
+            return 7.8;
+
+            break;
+        case 100:
+            return 7.5;
+
+            break;
+        case 200:
+            return 8.5;
+            break;
+        default:
+            break;
+    }
+}
+
+function checkWeight(weight) {
+    if (coinWeight < weight) {
+        alert('You have to introduce the correct weight');
+        return false;
+    }
+    return true;
+}
+
+function CalculateTotalValue(weight) {
+    coinSelected = coinSelected / 100;
+    totalCoins = coinWeight / weight;
+    return (totalCoins * coinSelected);
+}
+
 function getDecimalNum(num) {
     num = num.toFixed(3).toString().replace(/(\.\d*?[1-9])0+$/g, "$1");
     if (num % 2 == 0) {
@@ -89,10 +89,8 @@ function getDecimalNum(num) {
     return (num)
 }
 
-function checkWeight(weight) {
-    if (coinWeight < weight) {
-        alert('You have to introduce the correct weight');
-        return false;
-    } 
-    return true;
+function UpdatePlaceHolder(selectedCoin) {
+    getHtmlValues;
+    const input2 = document.getElementById("coinWeight");
+    input2.placeholder = getCoinWeight(selectedCoin);
 }
