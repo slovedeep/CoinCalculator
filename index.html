@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Calculator</title>
+    <script src="scripts/coinCalculator.js"></script>
+</head>
+
+<body>
+    <h1 class="title">Coin Calculator</h1>
+
+    <div>
+        <form action="">
+            <p>Please Select:</p>
+            <label for="coins">Select Coin</label>
+            <select name="coins" id="selectCoin">
+                <option value="1">1cnt</option>
+                <option value="2">2cnt</option>
+                <option value="5">5cnt</option>
+                <option value="10">10cnt</option>
+                <option value="20">20cnt</option>
+                <option value="50">50cnt</option>
+                <option value="100">1€</option>
+                <option value="200">2€</option>
+              </select>
+              <label for="weight">Weight</label>
+              <input type="text" id="coinWeight" name="weight" value="3.14">grams
+              <button onclick="Calculate()">Calculate</button>
+              <p id="total"></p>
+        </form>
+        
+    </div>
+</body>
+
+</html>
