@@ -10,81 +10,56 @@ function Calculate() {
     switch (coinSelected) {
         case 1:
             weight = 2.3;
-            if (coinWeight >= weight){
+            if (checkWeight(weight)) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 2:
             weight = 3;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 5:
             weight = 3.9;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 10:
             weight = 4.1;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 20:
             weight = 5.7;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 50:
             weight = 7.8;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 100:
             weight = 7.5;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         case 200:
             weight = 8.5;
-            if (coinWeight >= weight){
+            if (coinWeight >= weight) {
                 total = CalculateTotalValue(weight);
-            }
-            else{
-                alert('You have to introduce the correct weight');
             }
             break;
         default:
             break;
     }
     if (total != 0) {
-
         document.getElementById('total').innerHTML = 'There are ' + getDecimalNum(totalCoins) + ' coins and the total value of the coin ' + coinSelected + '€ is ' + getDecimalNum(total) + ' €';
     }
 }
@@ -92,7 +67,7 @@ function Calculate() {
 function CalculateTotalValue(weight) {
     coinSelected = coinSelected / 100;
     totalCoins = coinWeight / weight;
-    return ( totalCoins * coinSelected);
+    return (totalCoins * coinSelected);
 }
 
 function getHtmlValues() {
@@ -112,4 +87,12 @@ function getDecimalNum(num) {
         num = Math.floor(num);
     }
     return (num)
+}
+
+function checkWeight(weight) {
+    if (coinWeight < weight) {
+        alert('You have to introduce the correct weight');
+        return false;
+    } 
+    return true;
 }
