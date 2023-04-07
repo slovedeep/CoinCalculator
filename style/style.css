@@ -1,33 +1,49 @@
 body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: inline-block;
-    width: 150px;
-    font-weight: bold;
-  }
-  
-  input[type="number"] {
-    width: 100px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px
-  }
+  font-family: 'Monda', sans-serif;
+  background-color: #F79B13;
+}
+
+header{
+  top: 500px;
+}
+.title {
+  text-align: center;
+  text-decoration: solid;
+  font-size: 65px;
+  font-weight: 550;
+}
+
+#selectCoins, #coinWeightLbl {
+  /* position: absolute; */
+  /* width: 450px; */
+  height: 58px;
+  /* left: 246px;
+  top: 265px; */
+  font-weight: 550;
+  font-size: 40px;
+  /* line-height: 65px; */
+  color: #000000;
+}
+
+#selectCoin, #coinWeight{
+  width: 150px;
+  height: 40px;
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-color: #000000;
+  font-weight: bold;
+  background: transparent;
+}
+#logo{
+  width: 65px;
+}
+
+.logoRight{
+  float: right;
+  margin-right: 50px;
+}
+
+.logoLeft{
+  float: left;
+  margin-left: 50px;
+}
