@@ -69,7 +69,7 @@ function getCoinWeight(coin) {
 
 function checkWeight(weight) {
     if (coinWeight < weight) {
-        alert('You have to introduce the correct weight');
+        alert('You have to introduce the correct weight \n ਤੁਸੀਂ ਸਹੀ ਵਜਨ ਲਿਖੋ।');
         return false;
     }
     return true;
