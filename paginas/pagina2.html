@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-50">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ਗੋਲਕ-ਸੇਵਾ | Golak Seva</title>
-  <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="scripts/coinCalculator.js"></script>
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ਗੋਲਕ-ਸੇਵਾ | Golak Seva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="../scripts/coinCalculator.js"></script>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
  <body class="h-full flex flex-col items-center justify-start p-4 text-gray-800">
     <header class="w-full max-w-2xl flex items-center justify-between py-4">
-      <img src="img/Khanda.png" alt="Khanda logo" class="w-12 h-12" />
+      <img src="../img/Khanda.png" alt="Khanda logo" class="w-12 h-12" />
       <h1 class="text-2xl sm:text-3xl font-bold text-center">ਗੋਲਕ-ਸੇਵਾ</h1>
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
         <li>
-          <a href="paginas/pagina2.html" class="block py-2 px-3 text-gray-900 rounded-sm">Calculate Weight</a>
+          <a href="../index.html" class="block py-2 px-3 text-gray-900 rounded-sm">Calculate Quantity</a>
         </li>
       </ul>
     </header>
+
     <main class="w-full max-w-xl bg-white shadow-md rounded-2xl p-6 space-y-6">
       <div class="flex flex-col">
         <label for="selectCoin" class="text-lg font-semibold mb-2">Select Coin / ਸਿੱਕਾ ਚੁਣੋ</label>
@@ -37,9 +38,9 @@
       </div>
 
       <div class="flex flex-col">
-        <label for="inputWeight" class="text-lg font-semibold mb-2">Weight (g) / ਵਜਨ</label>
+        <label for="inputQuantity" class="text-lg font-semibold mb-2">Total Value €</label>
         <input
-          id="inputWeight"
+          id="inputQuantity"
           type="number"
           placeholder="Enter Total Weight of coins"
           class="p-2 rounded-md border border-gray-300"
@@ -47,7 +48,7 @@
       </div>
 
       <button
-        onclick="Calculate()"
+        onclick="CalculateTotalGrams()"
         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md"
       >
         Calculate / ਗਿਣਨਾ ਕਰੋ

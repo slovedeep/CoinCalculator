@@ -1,96 +1,52 @@
-var coinSelected;
-var coinWeight;
-var totalCoins;
+const coinWeights = {
+    1: 2.3,
+    2: 3.06,
+    5: 3.92,
+    10: 4.1,
+    20: 5.74,
+    50: 7.8,
+    100: 7.5,
+    200: 8.5
+};
 
 function Calculate() {
-    getHtmlValues();
-    console.log('The coinWeight is ' + coinWeight);
-    document.getElementById('total').innerHTML = '';
-    total = 0;
+    const coinValue = parseInt(document.getElementById('selectCoin').value);
+    const inputWeight = parseFloat(document.getElementById('inputWeight').value);
 
-    weight = getCoinWeight(coinSelected);
-    if (checkWeight(weight)) {
-        total = CalculateTotalValue(weight);
+    if (isNaN(coinValue) || isNaN(inputWeight) || inputWeight < 0) {
+        document.getElementById('resultContainer').textContent = 'Please enter a valid quantity.';
+        return;
     }
 
-    if (total != 0) {
-        document.getElementById('total').innerHTML = 'There are ' + getDecimalNum(totalCoins) + ' coins and the total value of the coin ' + coinSelected + '€ is ' + getDecimalNum(total) + ' €';
+    const selectedCoin = coinValue / 100;
+    const coinWeight = coinWeights[coinValue];
+    const totalCoins = inputWeight / coinWeight;
+    const totalQuantity = (totalCoins * selectedCoin).toFixed(5);
+
+    document.getElementById('resultContainer').innerHTML = `
+          <p>Selected coin: ${selectedCoin.toFixed(2)}€</p>
+          <p>Weight per Coin: ${coinWeight} g</p>
+          <p>Total Value: ${totalQuantity}€</p>
+        `;
+}
+
+function CalculateTotalGrams() {
+    const coinValue = parseInt(document.getElementById('selectCoin').value);
+    const inputQuantity = parseFloat(document.getElementById('inputQuantity').value);
+
+    if (isNaN(coinValue) || isNaN(inputQuantity) || inputQuantity < 0) {
+        document.getElementById('resultContainer').textContent = 'Please enter a valid quantity.';
+        return;
     }
-}
 
-function getHtmlValues() {
-    coinSelected = parseInt(document.getElementById('selectCoin').value) || 0;
+    const selectedCoin = coinValue / 100;
+    const coinWeight = coinWeights[coinValue];
+    const totalCoins = inputQuantity / selectedCoin;
+    const totalWeight = totalCoins * coinWeight;
 
-    let coinW = document.getElementById('coinWeight').value;
-    if (coinW.includes(',')) {
-        coinW = coinW.replace(',', '.');
-    }
-
-    coinWeight = parseFloat(coinW) || 0;
-}
-
-function getCoinWeight(coin) {
-    
-    switch (coin) {
-        case 1:
-            return 2.3;
-            break;
-        case 2:
-            return 3;
-
-            break;
-        case 5:
-            return 3.9;
-
-            break;
-        case 10:
-            return 4.1;
-
-            break;
-        case 20:
-            return 5.7;
-
-            break;
-        case 50:
-            return 7.8;
-
-            break;
-        case 100:
-            return 7.5;
-
-            break;
-        case 200:
-            return 8.5;
-            break;
-        default:
-            break;
-    }
-}
-
-function checkWeight(weight) {
-    if (coinWeight < weight) {
-        alert('You have to introduce the correct weight \n ਤੁਸੀਂ ਸਹੀ ਵਜਨ ਲਿਖੋ।');
-        return false;
-    }
-    return true;
-}
-
-function CalculateTotalValue(weight) {
-    coinSelected = coinSelected / 100;
-    totalCoins = coinWeight / weight;
-    return (totalCoins * coinSelected);
-}
-
-function getDecimalNum(num) {
-    num = num.toFixed(3).toString().replace(/(\.\d*?[1-9])0+$/g, "$1");
-    if (num % 2 == 0) {
-        num = Math.floor(num);
-    }
-    return (num)
-}
-
-function UpdatePlaceHolder(selectedCoin) {
-    getHtmlValues;
-    const input2 = document.getElementById("coinWeight");
-    input2.placeholder = getCoinWeight(selectedCoin);
+    document.getElementById('resultContainer').innerHTML = `
+          <p>Selected coin: ${selectedCoin.toFixed(2)} €</p>
+          <p>Weight per Coin: ${coinWeight} g</p>
+          <p>Total Weight: ${totalWeight} g</p>
+        `;
 }
