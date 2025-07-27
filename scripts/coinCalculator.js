@@ -21,7 +21,7 @@ function Calculate() {
     const selectedCoin = coinValue / 100;
     const coinWeight = coinWeights[coinValue];
     const totalCoins = inputWeight / coinWeight;
-    const totalQuantity = totalCoins * selectedCoin;
+    let totalQuantity = totalCoins * selectedCoin;
     totalQuantity = formatDecimal(totalQuantity);
 
     document.getElementById('resultContainer').innerHTML = `
@@ -43,7 +43,7 @@ function CalculateTotalGrams() {
     const selectedCoin = coinValue / 100;
     const coinWeight = coinWeights[coinValue];
     const totalCoins = inputQuantity / selectedCoin;
-    const totalWeight = totalCoins * coinWeight;
+    const totalWeight = (totalCoins * coinWeight).toFixed(2);
 
     document.getElementById('resultContainer').innerHTML = `
           <p>Selected coin: ${selectedCoin.toFixed(2)} €</p>
@@ -53,13 +53,19 @@ function CalculateTotalGrams() {
 }
 
 function formatDecimal(num) {
-    // Round to 5 decimal places, then convert to string
-    let rounded = num.toFixed(5);
+  // Round to 5 decimals first
+  let rounded = num.toFixed(5);
 
-    // Remove trailing zeroes but keep at least 2 decimals
-    let trimmed = rounded.replace(/(\.\d*?[1-9])0+$/g, '$1'); // trim extra zeros
-    trimmed = trimmed.replace(/(\.\d)$/, '$10');              // ensure at least 2 decimals
-    trimmed = trimmed.replace(/(\.\d)$/, '$10');              // in case only 1 decimal
+  // Trim trailing zeroes, keep at least 2 decimals
+  rounded = rounded.replace(/(\.\d{2,}?)(0+)$/, '$1');   // Remove extra zeros beyond 2
+  rounded = rounded.replace(/(\.\d)$/, '$10');           // Pad to 2 decimals if only 1
+  rounded = rounded.replace(/(\.)(\d)$/, '$1$20');       // Extra guard
 
-    return trimmed;
+  return rounded;
 }
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        document.getElementById("CalculateButton").click();
+    }
+});
